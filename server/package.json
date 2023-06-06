@@ -1,0 +1,20 @@
+{
+  "name": "studytracker",
+  "version": "1.0.0",
+  "description": "Backend server for StudyTracker",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server"
+  },
+  "keywords": [],
+  "author": "Garrett Atteberry",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
