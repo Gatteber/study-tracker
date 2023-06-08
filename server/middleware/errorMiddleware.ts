@@ -1,5 +1,6 @@
 import {Request, Response, NextFunction, ErrorRequestHandler} from 'express';
 
+//middleware is responsible for changing regular html error message from express
 const notFound = (req: Request, res: Response, next: NextFunction) => {
     const error = new Error(`Not Found - ${req.originalUrl}`);
     res.status(404);

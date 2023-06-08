@@ -2,9 +2,11 @@ import * as dotenv from 'dotenv';
 import express, {Express, Request, Response } from 'express';
 dotenv.config();
 
+import connectDB from './config/db';
 import {notFound, errorHandler} from './middleware/errorMiddleware';
 import userRoutes from './routes/userRoutes';
 
+connectDB();
 const app: Express = express();
 
 app.use(express.json());
