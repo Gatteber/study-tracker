@@ -1,3 +1,4 @@
+@import "./scss/variables";
 @import "./scss/meyerreset";
 @import "./scss/navbar";
 
@@ -5,5 +6,5 @@
 body {
     width: 100vh;
     height: auto;
-    background-color: white;
+    background-color: $black;
 }

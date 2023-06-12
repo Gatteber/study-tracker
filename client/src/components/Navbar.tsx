@@ -5,13 +5,13 @@ const Navbar = () => {
   return (
     <>
       {loggedIn ? (
-        <ul className="test">
+        <ul className="nav-item">
           <li>Profile</li>
           <li>Study</li>
           <li>Logout</li>
         </ul>
       ) : (
-        <ul className="test">
+        <ul className="nav-item">
           <li>Home</li>
           <li>Sign Up</li>
           <li>Log In</li>

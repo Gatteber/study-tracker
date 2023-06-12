@@ -1,5 +1,7 @@
-.test {
+@import "./variables";
+
+.nav-item {
     list-style: none;
     text-decoration: none;
-    color: red;
+    color: $lightGreen;
 }
