@@ -1,0 +1,9 @@
+@import "./scss/meyerreset";
+@import "./scss/navbar";
+
+//anything below will over-write the css styles imported.
+body {
+    width: 100vh;
+    height: auto;
+    background-color: white;
+}

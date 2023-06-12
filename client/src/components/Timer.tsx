@@ -1,12 +1,13 @@
 import {useState, useEffect, ChangeEvent} from 'react';
 
 const Timer = () => {
-  const [count, setCount] = useState(3600);
+  const [count, setCount] = useState(610);
   const [start, setStart] = useState<boolean>(false);
   const [minutes, setMinutes] = useState(0);
   const [hours, setHours] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [createTimer, setCreateTimer] = useState('00:00:00');
+  const [studyText, setStudyText] = useState<string>('Studying.');
 
   useEffect(() => {
     if (start) {
@@ -15,13 +16,19 @@ const Timer = () => {
         setHours(Math.floor(count / 3600));
         setMinutes(Math.floor((count / 60) % 60));
         setSeconds(Math.floor(count % 60));
+        //hacky breaktime setup.
+        if (minutes % 5 === 0) {
+          setStudyText('Break.');
+        } else {
+          setStudyText('Studying.');
+        }
       }, 1000);
 
       return () => {
         clearTimeout(timer);
       };
     }
-  }, [start, count]);
+  }, [start, count, minutes]);
 
   //form element only accepts numbers, so we can assert we will receive something parsable by parseInt
   const maxLengthCheck = (field: ChangeEvent<HTMLInputElement>) => {
@@ -38,9 +45,9 @@ const Timer = () => {
   return (
     <>
       <div>
-        {hours < 9 ? '0' + hours : hours}:
-        {minutes < 9 ? '0' + minutes : minutes}:
-        {seconds < 9 ? '0' + seconds : seconds}
+        {hours <= 9 ? '0' + hours : hours}:
+        {minutes <= 9 ? '0' + minutes : minutes}:
+        {seconds <= 9 ? '0' + seconds : seconds}
       </div>
       <div>{createTimer}</div>
       <button
@@ -65,6 +72,7 @@ const Timer = () => {
         onChange={(e) => maxLengthCheck(e)}
         placeholder="00:00:00"
       />
+      <div>Currently: {studyText}</div>
     </>
   );
 };
