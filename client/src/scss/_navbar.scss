@@ -1,7 +1,9 @@
 @import "./variables";
 
 .nav-item {
+    display: flex;
+    gap: 1rem;
+    color: $lightGreen;
     list-style: none;
     text-decoration: none;
-    color: $lightGreen;
 }

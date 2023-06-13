@@ -1,13 +1,13 @@
-import './style.scss';
 import Navbar from './components/Navbar';
-import Timer from './components/Timer';
+import './style.scss';
+import {Outlet} from 'react-router-dom';
 
 const App = () => {
   return (
-    <div>
+    <>
       <Navbar />
-      <Timer />
-    </div>
+      <Outlet />
+    </>
   );
 };
 export default App;
