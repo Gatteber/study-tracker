@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tsc",
-    "dev": "nodemon -q dist/server.js",
-    "client": "cd ../client/ && npm run dev"
+    "server": "nodemon -q dist/server.js",
+    "client": "cd ../client/ && npm run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client \""
   },
   "keywords": [],
   "author": "Garrett Atteberry",
@@ -27,6 +28,7 @@
     "@types/express": "^4.17.17",
     "@types/jsonwebtoken": "^9.0.2",
     "@types/node": "^20.2.5",
+    "concurrently": "^8.2.0",
     "nodemon": "^2.0.22",
     "typescript": "^5.1.3"
   }

@@ -6,6 +6,7 @@ import ErrorComponent from './components/ErrorComponent.tsx';
 import UserProfile from './pages/UserProfile.tsx';
 import Home from './pages/Home.tsx';
 import Login from './pages/Login.tsx';
+import PrivateRoute from './components/PrivateRoute.tsx';
 
 //TODO: add :userId to UserProfile
 const router = createBrowserRouter([
@@ -23,12 +24,23 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: 'login',
+        path: '/login',
         element: <Login />,
       },
+      // {
+      //   path: '/profile/',
+      //   element: <UserProfile />,
+      // },
+    ],
+  },
+  {
+    path: '/',
+    element: <App />,
+    errorElement: <ErrorComponent />,
+    children: [
       {
-        path: '/profile/',
-        element: <UserProfile />,
+        path: '/profile',
+        element: <PrivateRoute />,
       },
     ],
   },

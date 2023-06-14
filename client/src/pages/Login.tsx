@@ -9,7 +9,7 @@ type formData = {
 };
 
 const Login: React.FC = () => {
-  const {setUser} = useContext(UserContext);
+  const {setUser, setIsLoggedIn} = useContext(UserContext);
   const [formData, setFormData] = useState<formData>({
     email: '',
     password: '',
@@ -35,8 +35,15 @@ const Login: React.FC = () => {
       });
       const data = await res.json();
       console.log(data);
-      setUser(data);
+      if (data._id) {
+        setUser(data);
+        setIsLoggedIn(true);
+      } else {
+        //login failed
+        alert(data.message);
+      }
     } catch (err) {
+      //something bad went wrong
       console.error(err);
     }
 

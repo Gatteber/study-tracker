@@ -1,21 +1,49 @@
-import {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {UserContext} from '../context/UserContext';
 import {useContext} from 'react';
 
 const Navbar = () => {
-  const {user} = useContext(UserContext);
-  const [loggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const {user, setUser, isLoggedIn, setIsLoggedIn} = useContext(UserContext);
+  const handleLogout = async () => {
+    const apiUrlProxy = '/api/users/logout/';
+    try {
+      const res = await fetch(apiUrlProxy, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const data = await res.json();
+      console.log(data);
+      setIsLoggedIn(false);
+      setUser({
+        _id: '',
+        name: '',
+        email: '',
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
     <div id="nav-container">
       <nav>
-        {loggedIn ? (
+        {isLoggedIn ? (
           <ul className="nav-item">
             <li>
               <Link to={'/profile/'}>Profile</Link>
             </li>
             <li>Study</li>
-            <li>Logout</li>
+            <li>
+              <Link
+                to={'/'}
+                onClick={() => {
+                  handleLogout();
+                }}
+              >
+                Logout
+              </Link>
+            </li>
           </ul>
         ) : (
           <ul className="nav-item">
@@ -31,7 +59,9 @@ const Navbar = () => {
           </ul>
         )}
       </nav>
-      Current user is: {user.name}
+      {isLoggedIn
+        ? `Current user is: ${user.name}`
+        : 'Hello, and welcome to StudyTracker!'}
     </div>
   );
 };
