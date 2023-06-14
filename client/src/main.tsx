@@ -5,7 +5,7 @@ import {RouterProvider, createBrowserRouter} from 'react-router-dom';
 import ErrorComponent from './components/ErrorComponent.tsx';
 import UserProfile from './pages/UserProfile.tsx';
 import Home from './pages/Home.tsx';
-import Login from './components/Login.tsx';
+import Login from './pages/Login.tsx';
 
 //TODO: add :userId to UserProfile
 const router = createBrowserRouter([
