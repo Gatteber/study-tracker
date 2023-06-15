@@ -1,6 +1,6 @@
 import {createContext, SetStateAction, Dispatch} from "react";
 
-type User = {
+export type User = {
     _id: string,
     name: string,
     email: string,

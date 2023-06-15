@@ -8,6 +8,7 @@ export default defineConfig({
     proxy: {
       '/api/users/auth': 'http://localhost:5000',
       '/api/users/logout': 'http://localhost:5000',
+      '/api/users/profile': 'http://localhost:5000',
 
     }
   }

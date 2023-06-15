@@ -1,6 +1,6 @@
 import Timer from '../components/Timer';
 
-const Home = () => {
+const Home: React.FC = () => {
   return (
     <div>
       <Timer />

@@ -1,8 +1,8 @@
+import {useContext} from 'react';
 import {Link} from 'react-router-dom';
 import {UserContext} from '../context/UserContext';
-import {useContext} from 'react';
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   const {user, setUser, isLoggedIn, setIsLoggedIn} = useContext(UserContext);
   const handleLogout = async () => {
     const apiUrlProxy = '/api/users/logout/';
@@ -14,6 +14,7 @@ const Navbar = () => {
         },
       });
       const data = await res.json();
+      //TODO: Set a toast or message on webpage
       console.log(data);
       setIsLoggedIn(false);
       setUser({

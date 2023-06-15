@@ -1,6 +1,5 @@
-import {FormEvent, useState} from 'react';
-import {Form} from 'react-router-dom';
-import {useContext} from 'react';
+import {FormEvent, useState, useContext} from 'react';
+import {Form, useNavigate} from 'react-router-dom';
 import {UserContext} from '../context/UserContext';
 
 type formData = {
@@ -9,6 +8,7 @@ type formData = {
 };
 
 const Login: React.FC = () => {
+  const navigate = useNavigate();
   const {setUser, setIsLoggedIn} = useContext(UserContext);
   const [formData, setFormData] = useState<formData>({
     email: '',
@@ -34,16 +34,15 @@ const Login: React.FC = () => {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-      console.log(data);
       if (data._id) {
         setUser(data);
         setIsLoggedIn(true);
+        navigate('/');
       } else {
-        //login failed
+        //TODO: Make a toast
         alert(data.message);
       }
     } catch (err) {
-      //something bad went wrong
       console.error(err);
     }
 

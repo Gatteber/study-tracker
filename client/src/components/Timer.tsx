@@ -1,6 +1,6 @@
 import {useState, useEffect, ChangeEvent} from 'react';
 
-const Timer = () => {
+const Timer: React.FC = () => {
   const [count, setCount] = useState(610);
   const [start, setStart] = useState<boolean>(false);
   const [minutes, setMinutes] = useState(0);
