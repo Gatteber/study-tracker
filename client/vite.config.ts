@@ -9,6 +9,7 @@ export default defineConfig({
       '/api/users/auth': 'http://localhost:5000',
       '/api/users/logout': 'http://localhost:5000',
       '/api/users/profile': 'http://localhost:5000',
+      '/api/users/': 'http://localhost:5000',
 
     }
   }
