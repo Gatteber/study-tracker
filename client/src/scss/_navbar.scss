@@ -1,9 +1,31 @@
-@import "./variables";
+@import './variables';
+
+img {
+  width: 64px;
+  height: auth;
+}
+
+li {
+  padding-bottom: 0.25rem;
+  border-bottom: 1px transparent;
+  transition: all 250ms ease-in-out;
+}
+
+li:hover {
+  color: $white;
+  border-bottom: 1px solid $lightGreen;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .nav-item {
-    display: flex;
-    gap: 1rem;
-    color: $lightGreen;
-    list-style: none;
-    text-decoration: none;
+  display: flex;
+  gap: 1rem;
+  color: $lightGreen;
+  list-style: none;
+  text-decoration: none;
 }

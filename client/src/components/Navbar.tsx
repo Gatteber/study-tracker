@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
+import Logo from '../assets/Logo.png';
 
 const Navbar: React.FC = () => {
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(UserContext);
@@ -28,10 +29,11 @@ const Navbar: React.FC = () => {
   };
   return (
     <>
-      <div id="nav-container">
+      <div id='nav-container' className='nav-container'>
+        <img src={Logo} alt='study tracker logo'></img>
         <nav>
           {isLoggedIn ? (
-            <ul className="nav-item">
+            <ul className='nav-item'>
               <li>
                 <Link to={'/profile/'}>Profile</Link>
               </li>
@@ -48,23 +50,23 @@ const Navbar: React.FC = () => {
               </li>
             </ul>
           ) : (
-            <ul className="nav-item">
+            <ul className='nav-item'>
               <li>
                 <Link to={'/'}>Home</Link>
               </li>
               <li>
-                <Link to={'/signup'}>Sign Up</Link>
+                <Link to={'/signup'}>Sign up</Link>
               </li>
               <li>
-                <Link to={'/login'}>Log In</Link>
+                <Link to={'/login'}>Log in</Link>
               </li>
             </ul>
           )}
         </nav>
-        {isLoggedIn
-          ? `Current user is: ${user.name}`
-          : 'Hello, and welcome to StudyTracker!'}
       </div>
+      {isLoggedIn
+        ? `Current user is: ${user.name}`
+        : 'Hello, and welcome to StudyTracker!'}
     </>
   );
 };

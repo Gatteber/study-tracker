@@ -1,17 +1,18 @@
-@import "./scss/variables";
-@import "./scss/meyerreset";
-@import "./scss/navbar";
-@import "./scss/loadingspinner";
-@import "./scss/signupform";
+@import './scss/variables';
+@import './scss/meyerreset';
+@import './scss/navbar';
+@import './scss/loadingspinner';
+@import './scss/signupform';
 
 //anything below will over-write the css styles imported.
 body {
-    width: 100vh;
-    height: auto;
-    background-color: $black;
+  width: auto;
+  height: auto;
+  background-color: $black;
+  margin: 0.5rem 1rem;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
