@@ -9,7 +9,6 @@ const App = () => {
   const [user, setUser] = useState<User>({_id: '', name: '', email: ''});
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  //check if cookie
   useEffect(() => {
     const checkIfCookie = async () => {
       const apiUrlProxy = '/api/users/profile';
