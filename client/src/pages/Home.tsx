@@ -1,4 +1,5 @@
 import BooksLanding from '../assets/BooksLanding.jpg';
+import Hero from '../components/Hero';
 import Timer from '../components/Timer';
 
 const Home: React.FC = () => {
@@ -7,22 +8,16 @@ const Home: React.FC = () => {
       <div className='landing-box'>
         <div className='landing-box-left'>
           <h1>
-            Study Tracker - Improve your focus, attune your mind, and study hard
+            Study Tracker - Improve your focus, prepare yourself, and grow
           </h1>
           <p>
-            Let's face it: studying nowadays is hard. Study Tracker can help you
+            Let's face it: Studying nowadays is hard. Study Tracker can help you
             to get more mileage out of your studying, even when you're tired.
           </p>
-          <button>Sign up for free!</button>
-        </div>
-        <div className='landing-box-right'>
-          <img
-            src={BooksLanding}
-            className='landing-box-picture'
-            alt='landing box picture'
-          ></img>
+          <button id='landing-button'>Try it now!</button>
         </div>
       </div>
+      <Hero />
       <Timer />
     </div>
   );
