@@ -1,6 +1,6 @@
-import {FormEvent, useState, useContext} from 'react';
-import {Form, useNavigate} from 'react-router-dom';
-import {UserContext} from '../context/UserContext';
+import { FormEvent, useState, useContext } from 'react';
+import { Form, useNavigate } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
 
 type formData = {
   email: string;
@@ -9,7 +9,7 @@ type formData = {
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
-  const {setUser, setIsLoggedIn} = useContext(UserContext);
+  const { setUser, setIsLoggedIn } = useContext(UserContext);
   const [formData, setFormData] = useState<formData>({
     email: '',
     password: '',
@@ -53,35 +53,35 @@ const Login: React.FC = () => {
     });
   };
   return (
-    <div>
+    <div className='outlet-content'>
       Login
       <Form
-        method="post"
-        onSubmit={(e) => {
+        method='post'
+        onSubmit={e => {
           handleSubmit(e);
         }}
       >
         <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Enter your Email..."
+          type='email'
+          name='email'
+          id='email'
+          placeholder='Enter your Email...'
           value={formData.email}
-          onChange={(e) => {
+          onChange={e => {
             handleChange(e);
           }}
         />
         <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="Enter your Password..."
+          type='password'
+          name='password'
+          id='password'
+          placeholder='Enter your Password...'
           value={formData.password}
-          onChange={(e) => {
+          onChange={e => {
             handleChange(e);
           }}
         />
-        <button type="submit" formAction="submit">
+        <button type='submit' formAction='submit'>
           Log in!
         </button>
       </Form>

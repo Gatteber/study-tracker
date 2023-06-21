@@ -17,9 +17,26 @@ li:hover {
 }
 
 .nav-container {
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  overflow-x: hidden;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid white;
+  color: $white;
+}
+
+.nav-status {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .nav-item {

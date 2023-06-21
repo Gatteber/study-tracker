@@ -3,6 +3,7 @@
 @import './scss/navbar';
 @import './scss/loadingspinner';
 @import './scss/signupform';
+@import './scss/home/';
 
 //anything below will over-write the css styles imported.
 body {
@@ -15,4 +16,8 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.outlet-content {
+  margin-top: 6rem;
 }

@@ -1,12 +1,12 @@
 import './style.scss';
-import {useEffect, useState} from 'react';
-import {Outlet} from 'react-router-dom';
-import {UserContext, User} from './context/UserContext';
+import { useEffect, useState } from 'react';
+import { Outlet } from 'react-router-dom';
+import { UserContext, User } from './context/UserContext';
 import Navbar from './components/Navbar';
 import LoadingSpinner from './components/LoadingSpinner';
 
 const App = () => {
-  const [user, setUser] = useState<User>({_id: '', name: '', email: ''});
+  const [user, setUser] = useState<User>({ _id: '', name: '', email: '' });
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   useEffect(() => {
@@ -39,7 +39,9 @@ const App = () => {
   }, []);
   return (
     <>
-      <UserContext.Provider value={{user, setUser, isLoggedIn, setIsLoggedIn}}>
+      <UserContext.Provider
+        value={{ user, setUser, isLoggedIn, setIsLoggedIn }}
+      >
         {isLoading ? (
           <LoadingSpinner />
         ) : (

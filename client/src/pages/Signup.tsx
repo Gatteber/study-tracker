@@ -1,6 +1,6 @@
-import {FormEvent, useState, useContext} from 'react';
-import {Form, useNavigate} from 'react-router-dom';
-import {UserContext} from '../context/UserContext';
+import { FormEvent, useState, useContext } from 'react';
+import { Form, useNavigate } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
 
 type FormData = {
   name: string;
@@ -10,7 +10,7 @@ type FormData = {
 
 const Signup: React.FC = () => {
   const navigate = useNavigate();
-  const {setUser, setIsLoggedIn} = useContext(UserContext);
+  const { setUser, setIsLoggedIn } = useContext(UserContext);
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -53,49 +53,49 @@ const Signup: React.FC = () => {
     });
   };
   return (
-    <>
+    <div className='outlet-content'>
       <Form
-        className="signup-form"
-        method="post"
-        onSubmit={(e) => {
+        className='signup-form'
+        method='post'
+        onSubmit={e => {
           handleSubmit(e);
         }}
       >
         <input
-          type="text"
-          name="name"
-          id="name"
-          placeholder="Enter your Username..."
+          type='text'
+          name='name'
+          id='name'
+          placeholder='Enter your Username...'
           value={formData.name}
-          onChange={(e) => {
+          onChange={e => {
             handleChange(e);
           }}
         />
         <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Enter your Email..."
+          type='email'
+          name='email'
+          id='email'
+          placeholder='Enter your Email...'
           value={formData.email}
-          onChange={(e) => {
+          onChange={e => {
             handleChange(e);
           }}
         />
         <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="Enter your Password..."
+          type='password'
+          name='password'
+          id='password'
+          placeholder='Enter your Password...'
           value={formData.password}
-          onChange={(e) => {
+          onChange={e => {
             handleChange(e);
           }}
         />
-        <button type="submit" formAction="submit">
+        <button type='submit' formAction='submit'>
           Create Account!
         </button>
       </Form>
-    </>
+    </div>
   );
 };
 export default Signup;

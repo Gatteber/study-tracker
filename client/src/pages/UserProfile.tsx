@@ -1,4 +1,4 @@
 const UserProfile: React.FC = () => {
-  return <div>UserProfile</div>;
+  return <div className='outlet-content'>UserProfile</div>;
 };
 export default UserProfile;
