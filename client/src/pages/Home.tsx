@@ -1,4 +1,3 @@
-import BooksLanding from '../assets/BooksLanding.jpg';
 import Hero from '../components/Hero';
 import Timer from '../components/Timer';
 
@@ -18,6 +17,12 @@ const Home: React.FC = () => {
         </div>
       </div>
       <Hero />
+      <div className='hero-transition'></div>
+      <div className='cta'>
+        <h3> What are you waiting for?</h3>
+        <p>Let's study together</p>
+        <button id='landing-button'>Sign up</button>
+      </div>
       <Timer />
     </div>
   );

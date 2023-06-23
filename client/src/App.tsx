@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { UserContext, User } from './context/UserContext';
 import Navbar from './components/Navbar';
 import LoadingSpinner from './components/LoadingSpinner';
+import Footer from './components/Footer';
 
 const App = () => {
   const [user, setUser] = useState<User>({ _id: '', name: '', email: '' });
@@ -48,6 +49,7 @@ const App = () => {
           <>
             <Navbar />
             <Outlet />
+            <Footer />
           </>
         )}
       </UserContext.Provider>

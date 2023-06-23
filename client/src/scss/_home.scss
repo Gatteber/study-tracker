@@ -1,11 +1,13 @@
 @import './variables';
+@import './hero';
 
 h1 {
   font-size: 2.5rem;
   color: $white;
 }
 
-h2 {
+h2,
+h3 {
   font-size: 2rem;
   color: $white;
   text-align: center;
@@ -25,7 +27,6 @@ p {
   background-size: cover;
   background-position: bottom;
   padding: 0 2rem 15rem 2rem;
-  margin-bottom: 2rem;
 }
 
 .landing-box-left {
@@ -66,4 +67,14 @@ p {
 #landing-button:hover:after {
   opacity: 1;
   padding-left: 1rem;
+}
+
+.hero-transition {
+  padding: 0;
+  width: 100%;
+  background-image: url('../assets/SlantedGradient.svg');
+  background-size: contain;
+  background-position: top;
+  padding-bottom: 10rem;
+  margin-bottom: 2rem;
 }

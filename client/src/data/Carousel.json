@@ -1,0 +1,19 @@
+{
+  "slides": [
+    {
+      "src": "../assets/BooksLanding.jpg",
+      "alt": "track your studies",
+      "txt": "Track your Studies."
+    },
+    {
+      "src": "#",
+      "alt": "improve your life",
+      "txt": "Improve your Life."
+    },
+    {
+      "src": "#",
+      "alt": "get what you want",
+      "txt": "Get what you want."
+    }
+  ]
+}

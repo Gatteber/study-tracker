@@ -1,0 +1,69 @@
+@import './variables';
+
+.hero-section {
+  padding: 2rem 2rem 2rem 2rem;
+  background-color: $darkPurple;
+  border-top: 1px solid $white;
+}
+
+.hero-box {
+  padding: 2rem 0 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.hero-box-left-text {
+  animation: fadeIn 3s;
+  -webkit-animation: fadeIn 3s;
+  -moz-animation: fadeIn 3s;
+  -o-animation: fadeIn 3s;
+  -ms-animation: fadeIn 3s;
+}
+
+.hero-img-c {
+  object-fit: cover;
+  display: none;
+  background-color: $darkGreen;
+  width: 25rem;
+  height: 12.5rem;
+  animation: fadeIn 3s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.hero-img-c-active {
+  display: block;
+}
+
+.hero-dotbox-c {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.dot-c {
+  cursor: pointer;
+  background-color: $darkGreen;
+  width: 0.25rem;
+  height: 0.25rem;
+  margin-top: 1rem;
+  padding: 0.25rem 0.25rem 0.25rem 0.25rem;
+  border-radius: 50%;
+}
+
+.dot-c-active {
+  background-color: $lightGreen;
+}
+
+.hero-text {
+  font-size: 1.5rem;
+  color: $white;
+}
