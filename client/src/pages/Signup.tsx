@@ -54,47 +54,61 @@ const Signup: React.FC = () => {
   };
   return (
     <div className='outlet-content'>
-      <Form
-        className='signup-form'
-        method='post'
-        onSubmit={e => {
-          handleSubmit(e);
-        }}
-      >
-        <input
-          type='text'
-          name='name'
-          id='name'
-          placeholder='Enter your Username...'
-          value={formData.name}
-          onChange={e => {
-            handleChange(e);
-          }}
-        />
-        <input
-          type='email'
-          name='email'
-          id='email'
-          placeholder='Enter your Email...'
-          value={formData.email}
-          onChange={e => {
-            handleChange(e);
-          }}
-        />
-        <input
-          type='password'
-          name='password'
-          id='password'
-          placeholder='Enter your Password...'
-          value={formData.password}
-          onChange={e => {
-            handleChange(e);
-          }}
-        />
-        <button type='submit' formAction='submit'>
-          Create Account!
-        </button>
-      </Form>
+      <div className='signup-content'>
+        <h1>Sign up for Study Tracker</h1>
+        <div className='signup-form-box'>
+          <Form
+            className='signup-form'
+            method='post'
+            onSubmit={e => {
+              handleSubmit(e);
+            }}
+          >
+            <label htmlFor='name'>Username</label>
+            <input
+              type='text'
+              name='name'
+              id='name'
+              autoComplete='user username'
+              placeholder='Enter your Username...'
+              value={formData.name}
+              onChange={e => {
+                handleChange(e);
+              }}
+            />
+            <br></br>
+            <label htmlFor='email'>Email</label>
+            <input
+              type='email'
+              name='email'
+              id='email'
+              autoComplete='user email-address'
+              placeholder='Enter your Email...'
+              value={formData.email}
+              onChange={e => {
+                handleChange(e);
+              }}
+            />
+            <br></br>
+            <label htmlFor='password'>Password</label>
+            <input
+              type='password'
+              name='password'
+              id='password'
+              autoComplete='user password'
+              placeholder='Enter your Password...'
+              value={formData.password}
+              onChange={e => {
+                handleChange(e);
+              }}
+            />
+            <br></br>
+            <button type='submit' formAction='submit'>
+              Create Account
+            </button>
+          </Form>
+        </div>
+      </div>
     </div>
   );
 };

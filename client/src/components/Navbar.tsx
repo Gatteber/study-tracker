@@ -31,7 +31,9 @@ const Navbar: React.FC = () => {
     <>
       <div id='nav-container' className='nav-container'>
         <div className='nav-status'>
-          <img src={Logo} alt='study tracker logo'></img>
+          <Link to='/'>
+            <img src={Logo} alt='study tracker logo'></img>
+          </Link>
           <span>
             {isLoggedIn ? `Logged in as: ${user.name}` : 'Not logged in'}
           </span>

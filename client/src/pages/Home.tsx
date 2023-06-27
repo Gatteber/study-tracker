@@ -1,5 +1,5 @@
 import Hero from '../components/Hero';
-import Timer from '../components/Timer';
+import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => {
   return (
@@ -13,17 +13,27 @@ const Home: React.FC = () => {
             Let's face it: Studying nowadays is hard. Study Tracker can help you
             to get more mileage out of your studying, even when you're tired.
           </p>
-          <button id='landing-button'>Try it now!</button>
+          <Link to='/'>
+            <button id='landing-button'>Try it now!</button>
+          </Link>
         </div>
       </div>
       <Hero />
       <div className='hero-transition'></div>
       <div className='cta'>
-        <h3> What are you waiting for?</h3>
-        <p>Let's study together</p>
-        <button id='landing-button'>Sign up</button>
+        <div className='cta-box'>
+          <h3> What are you waiting for?</h3>
+          <p>Get studying now.</p>
+          <div className='cta-button-box'>
+            <Link to='/signup'>
+              <button id='landing-button'>Register</button>
+            </Link>
+            <Link to='/login'>
+              <button id='landing-button'>Sign in</button>
+            </Link>
+          </div>
+        </div>
       </div>
-      <Timer />
     </div>
   );
 };

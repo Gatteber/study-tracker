@@ -78,3 +78,29 @@ p {
   padding-bottom: 10rem;
   margin-bottom: 2rem;
 }
+
+.hero-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 5rem 0 5rem 0;
+  gap: 3rem;
+}
+
+.cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.cta-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.cta-button-box {
+  display: flex;
+  gap: 5rem;
+}
