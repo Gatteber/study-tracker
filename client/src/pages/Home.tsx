@@ -13,7 +13,7 @@ const Home: React.FC = () => {
             Let's face it: Studying nowadays is hard. Study Tracker can help you
             to get more mileage out of your studying, even when you're tired.
           </p>
-          <Link to='/'>
+          <Link to='/demo'>
             <button id='landing-button'>Try it now!</button>
           </Link>
         </div>

@@ -8,6 +8,7 @@ import Login from './pages/Login.tsx';
 import UserProfile from './pages/UserProfile.tsx';
 import PrivateRoute from './components/PrivateRoute.tsx';
 import Signup from './pages/Signup.tsx';
+import DemoTimer from './pages/DemoTimer.tsx';
 
 //TODO: add :userId to UserProfile
 const router = createBrowserRouter([
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login />,
+      },
+      {
+        path: '/demo',
+        element: <DemoTimer />,
       },
       {
         path: '/profile',
