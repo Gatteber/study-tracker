@@ -23,9 +23,23 @@ const Timer: React.FC = () => {
   };
 
   useEffect(() => {
+    const unloadCallback = (e: BeforeUnloadEvent) => {
+      e.preventDefault();
+      e.returnValue = '';
+      document.title = 'StudyTracker';
+      return '';
+    };
+
+    window.addEventListener('beforeunload', unloadCallback);
+    return () => {
+      window.removeEventListener('beforeunload', unloadCallback);
+    };
+  }, []);
+
+  useEffect(() => {
     const alarmSound = new Audio(alarm);
     const checkStatus = () => {
-      //7200s = 2h. 1500s = 25m. 300s = 5m.
+      //7200s = 2h 1500s = 25m 300s = 5m
       if (elapsed >= 1500) {
         setStudyText('Break');
         alarmSound.play();
@@ -47,9 +61,8 @@ const Timer: React.FC = () => {
         setMinutes(Math.floor((count / 60) % 60));
         setSeconds(Math.floor(count % 60));
         checkStatus();
+        document.title = `StudyTracker - ${studyText}`;
       }, 1000);
-
-      document.title = `StudyTracker - ${studyText}`;
 
       return () => {
         clearTimeout(timer);
