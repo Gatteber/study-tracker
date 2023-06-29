@@ -1,5 +1,9 @@
 @import './variables';
 
+.h1-demo-text {
+  text-align: center;
+}
+
 .timer-box {
   display: flex;
   flex-direction: column;
@@ -15,6 +19,10 @@
   border: 1px solid $darkPurple;
   border-radius: 5px;
   padding: 2rem 4rem 2rem 4rem;
+
+  &.break {
+    border: 1px solid $darkGreen;
+  }
 }
 
 .timer-numbers {
@@ -23,6 +31,11 @@
   border: 1px solid $darkPurple;
   border-radius: 5px;
   padding: 1rem;
+
+  &.break {
+    color: $darkGreen;
+    border: 1px solid $darkGreen;
+  }
 }
 
 .timer-button-box {
@@ -42,8 +55,17 @@
   &:hover {
     background-color: $lightPurple;
   }
+  &.break {
+    background-color: $darkGreen;
+    &.break:hover {
+      background-color: $lightGreen;
+    }
+  }
 }
 
 .study-status {
   color: $darkPurple;
+  &.break {
+    color: $darkGreen;
+  }
 }

@@ -3,7 +3,7 @@ import DemoTimerComponent from '../components/DemoTimerComponent';
 const DemoTimer: React.FC = () => {
   return (
     <div className='outlet-content'>
-      <h1>Study Tracker - Try it out!</h1>
+      <h1 className='h1-demo-text'>Try StudyTracker!</h1>
       <DemoTimerComponent />
     </div>
   );
