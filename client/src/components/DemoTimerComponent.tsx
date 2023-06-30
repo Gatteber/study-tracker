@@ -64,6 +64,12 @@ const Timer: React.FC = () => {
         document.title = `StudyTracker - ${studyText}`;
       }, 1000);
 
+      if (count === 0) {
+        alarmSound.play();
+        setStart(false);
+        setStudyText('Finished!');
+      }
+
       return () => {
         clearTimeout(timer);
       };

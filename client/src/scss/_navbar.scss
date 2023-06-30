@@ -5,17 +5,6 @@ img {
   height: auth;
 }
 
-li {
-  padding-bottom: 0.25rem;
-  border-bottom: 1px transparent;
-  transition: all 250ms ease-in-out;
-}
-
-li:hover {
-  color: $white;
-  border-bottom: 1px solid $lightGreen;
-}
-
 .nav-container {
   margin-bottom: 2rem;
   padding: 0 0 0.5rem 0;
@@ -48,4 +37,15 @@ li:hover {
   color: $lightGreen;
   list-style: none;
   text-decoration: none;
+
+  li {
+    padding-bottom: 0.25rem;
+    border-bottom: 1px transparent;
+    transition: all 250ms ease-in-out;
+  }
+
+  li:hover {
+    color: $white;
+    border-bottom: 1px solid $lightGreen;
+  }
 }

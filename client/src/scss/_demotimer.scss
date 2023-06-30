@@ -69,3 +69,27 @@
     color: $darkGreen;
   }
 }
+
+.instructions-box {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.list-instructions {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  gap: 0.5rem;
+  padding-top: 0.25rem;
+  list-style: list-item;
+  line-height: 1.2;
+  color: $white;
+}
+
+.signup-link {
+  border-bottom: 1px solid $lightGreen;
+  color: $lightGreen;
+}
