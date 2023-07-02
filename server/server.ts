@@ -6,7 +6,7 @@ import connectDB from './config/db';
 import {notFound, errorHandler} from './middleware/errorMiddleware';
 import cookieParser from 'cookie-parser';
 import userRoutes from './routes/userRoutes';
-
+import studySessionRoutes from './routes/studySessionRoutes';
 
 //MongoDB connection
 connectDB();
@@ -22,6 +22,7 @@ app.use(cookieParser());
 
 //routes
 app.use('/api/users', userRoutes);
+app.use('/api/study-sessions', studySessionRoutes);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello world!');

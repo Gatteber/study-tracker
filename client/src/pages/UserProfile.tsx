@@ -1,4 +1,13 @@
+import { useContext } from 'react';
+import { UserContext } from '../context/UserContext';
+
 const UserProfile: React.FC = () => {
-  return <div className='outlet-content'>UserProfile</div>;
+  const { user } = useContext(UserContext);
+
+  return (
+    <div className='outlet-content'>
+      <h1>Hi, {user.name}</h1>
+    </div>
+  );
 };
 export default UserProfile;

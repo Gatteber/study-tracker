@@ -6,7 +6,7 @@ export interface IUserDoc extends Document {
     email: string,
     password: string,
     matchPassword: (pw: string) => Promise<Boolean> 
-}
+} 
 
 const userSchema = new mongoose.Schema<IUserDoc>({
     name: {
