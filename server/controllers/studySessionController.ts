@@ -9,7 +9,14 @@ import User from "../models/userModel";
 const getStudySessions = asyncHandler(async (req: Request, res: Response) => {
     const { _id } = req.body;
 
-    const findSessions = await StudySession.find(); 
+    const findSessions = await StudySession.find( { user : _id } );
+
+    if(findSessions) {
+        res.status(200).json(findSessions);
+    } else {
+        res.status(404)
+        throw new Error('No sessions found');
+    }
 });
 
 // @desc - store study session
@@ -19,7 +26,7 @@ const createStudySession = asyncHandler(async (req: Request, res: Response) =>
 {
     const { _id, length, completed } = req.body;
 
-    const user = await User.findById(_id).select('-password');
+    const user = await User.findById(_id).select('uniqueId');
     if(user) {
     const studySession = await StudySession.create({
         user,
@@ -36,4 +43,7 @@ const createStudySession = asyncHandler(async (req: Request, res: Response) =>
     };
 });
 
-export { createStudySession };
+export { 
+    getStudySessions,
+    createStudySession,
+};

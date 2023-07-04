@@ -20,6 +20,7 @@ const Timer: React.FC = () => {
     setHours(2);
     setMinutes(0);
     setSeconds(0);
+    document.title = 'StudyTracker';
   };
 
   useEffect(() => {
