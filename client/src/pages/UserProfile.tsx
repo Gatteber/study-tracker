@@ -1,9 +1,25 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
+import StudyCard from '../components/StudyCard';
+
+export type SessionData = {
+  _id: string;
+  completed: boolean;
+  length: number;
+  user: string;
+  createdAt: string;
+};
 
 const UserProfile: React.FC = () => {
   const { user } = useContext(UserContext);
+  const [studySessions, setStudySessions] = useState<SessionData[]>();
+
+  const calculateStudyTime = (array: SessionData[]) => {
+    let studyTime = 0;
+    array.map(item => (studyTime += item.length));
+    return studyTime;
+  };
   useEffect(() => {
     const getStudySessions = async () => {
       const apiUrlProxy = '/api/study-sessions';
@@ -15,17 +31,47 @@ const UserProfile: React.FC = () => {
           },
         });
         const sessionsFound = await fetchSessions.json();
-        console.log(sessionsFound);
+        setStudySessions(sessionsFound);
       } catch (err) {
         console.error(err);
       }
     };
     getStudySessions();
   }, []);
+  console.log(studySessions);
   return (
     <div className='outlet-content'>
-      <h1>Hi, {user.name}</h1>
-      <p> the id is {user._id}</p>
+      <div className='userprofile-greeting'>
+        <h1>Welcome back, {user.name}!</h1>
+        <p>
+          You've studied for&nbsp;
+          {studySessions &&
+            Math.floor(calculateStudyTime(studySessions) / 3600)}
+          &nbsp;hours.
+        </p>
+      </div>
+      <div className='userprofile-box'>
+        <div className='userprofile-nav'>
+          <ul className='userprofile-buttons'>
+            <li>
+              <button className='study-button'>Home</button>
+            </li>
+            <li>
+              <button className='study-button'>Start session</button>
+            </li>
+            <li>
+              <button className='study-button'>Study stats</button>
+            </li>
+            <li className='userprofile-last-item'>
+              <button className='study-button'>Edit profile</button>
+            </li>
+          </ul>
+        </div>
+        <div className='userprofile-studylog'>
+          <h3 className='userprofile-recent-log'>Your recent sessions:</h3>
+          <StudyCard studySessions={studySessions} />
+        </div>
+      </div>
     </div>
   );
 };
