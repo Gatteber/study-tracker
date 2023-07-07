@@ -9,6 +9,7 @@ import UserProfile from './pages/UserProfile.tsx';
 import PrivateRoute from './components/PrivateRoute.tsx';
 import Signup from './pages/Signup.tsx';
 import DemoTimer from './pages/DemoTimer.tsx';
+import StudySession from './pages/StudySession.tsx';
 
 //TODO: add :userId to UserProfile
 const router = createBrowserRouter([
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
           {
             path: '/profile',
             element: <UserProfile />,
+          },
+          {
+            path: '/profile/study-session',
+            element: <StudySession />,
           },
         ],
       },

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import StudyCard from '../components/StudyCard';
+import { Link } from 'react-router-dom';
 
 export type SessionData = {
   _id: string;
@@ -54,10 +55,14 @@ const UserProfile: React.FC = () => {
         <div className='userprofile-nav'>
           <ul className='userprofile-buttons'>
             <li>
-              <button className='study-button'>Home</button>
+              <Link to='/'>
+                <button className='study-button'>Home</button>
+              </Link>
             </li>
             <li>
-              <button className='study-button'>Start session</button>
+              <Link to='study-session'>
+                <button className='study-button'>Start session</button>
+              </Link>
             </li>
             <li>
               <button className='study-button'>Study stats</button>

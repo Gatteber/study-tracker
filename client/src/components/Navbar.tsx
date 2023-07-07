@@ -44,7 +44,9 @@ const Navbar: React.FC = () => {
               <li>
                 <Link to={'/profile/'}>Profile</Link>
               </li>
-              <li>Study</li>
+              <li>
+                <Link to={'/profile/study-session'}>Study</Link>
+              </li>
               <li>
                 <Link
                   to={'/'}
