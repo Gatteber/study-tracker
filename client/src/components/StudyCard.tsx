@@ -1,16 +1,17 @@
-type session = {
-  _id: string;
-  completed: boolean;
-  length: number;
-  user: string;
-  createdAt: string;
-};
+import { SetStateAction } from 'react';
+import { SessionData } from '../pages/UserProfile';
 
 interface IStudySessions {
-  studySessions: session[] | undefined;
+  studySessions: SessionData[] | undefined;
+  setModalSession: React.Dispatch<SetStateAction<SessionData | undefined>>;
+  handleClick: (session: SessionData | undefined) => void;
 }
 
-const StudyCard = ({ studySessions }: IStudySessions) => {
+const StudyCard = ({
+  studySessions,
+  setModalSession,
+  handleClick,
+}: IStudySessions) => {
   return (
     <div className='userprofile-study-card-box'>
       {studySessions &&
@@ -28,6 +29,13 @@ const StudyCard = ({ studySessions }: IStudySessions) => {
               You {session.completed ? 'finished' : "didn't finish"} this
               session.
             </p>
+            <p>-- Notes --</p>
+            <p>
+              lorem ipsum color det i'm writing generic filler text to put some
+              notes in here who knows how long this will end up being ok looks
+              good.
+            </p>
+            <button onClick={() => handleClick(session)}>Edit note</button>
           </div>
         ))}
     </div>

@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import StudyCard from '../components/StudyCard';
 import { Link } from 'react-router-dom';
+import Modal from '../components/Modal';
 
 export type SessionData = {
   _id: string;
@@ -15,7 +16,12 @@ export type SessionData = {
 const UserProfile: React.FC = () => {
   const { user } = useContext(UserContext);
   const [studySessions, setStudySessions] = useState<SessionData[]>();
-
+  const [modalSession, setModalSession] = useState<SessionData>();
+  const [modalActive, setModalActive] = useState<boolean>(false);
+  const handleClick = (data: SessionData | undefined) => {
+    setModalSession(data);
+    setModalActive(modalActive => !modalActive);
+  };
   const calculateStudyTime = (array: SessionData[]) => {
     let studyTime = 0;
     array.map(item => (studyTime += item.length));
@@ -42,6 +48,11 @@ const UserProfile: React.FC = () => {
   console.log(studySessions);
   return (
     <div className='outlet-content'>
+      <Modal
+        modalSession={modalSession}
+        modalActive={modalActive}
+        handleClick={handleClick}
+      />
       <div className='userprofile-greeting'>
         <h1>Welcome back, {user.name}!</h1>
         <p>
@@ -74,7 +85,11 @@ const UserProfile: React.FC = () => {
         </div>
         <div className='userprofile-studylog'>
           <h3 className='userprofile-recent-log'>Your recent sessions:</h3>
-          <StudyCard studySessions={studySessions} />
+          <StudyCard
+            studySessions={studySessions}
+            setModalSession={setModalSession}
+            handleClick={handleClick}
+          />
         </div>
       </div>
     </div>
