@@ -4,6 +4,7 @@ export interface IStudySessionSchema extends Document {
     user: ObjectId,
     length: number,
     completed: boolean,
+    comment: string,
 }
 
 const studySessionSchema = new mongoose.Schema<IStudySessionSchema>({
@@ -19,6 +20,10 @@ const studySessionSchema = new mongoose.Schema<IStudySessionSchema>({
     completed : {
         type: Boolean,
         required: true,
+    },
+    comment: {
+        type: String,
+        default: '',
     },
 },
     {

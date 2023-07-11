@@ -22,7 +22,7 @@ const getStudySessions = asyncHandler(async (req: Request, res: Response) => {
 // @access Private
 const createStudySession = asyncHandler(async (req: Request, res: Response) => 
 {
-    const { _id, length, completed } = req.body;
+    const { _id, length, completed, comment } = req.body;
 
     const user = await User.findById(_id).select('uniqueId');
     if(user) {
@@ -30,6 +30,7 @@ const createStudySession = asyncHandler(async (req: Request, res: Response) =>
         user,
         length,
         completed,
+        comment,
         });
 
         if (studySession) {
