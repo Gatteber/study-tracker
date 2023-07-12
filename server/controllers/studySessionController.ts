@@ -51,7 +51,7 @@ const deleteStudySession = asyncHandler(async (req: Request, res: Response) =>
     const itemToDelete = await StudySession.findOne({ _id });
     if (itemToDelete) {
         await StudySession.deleteOne({ _id });
-        res.status(204).json({message: 'item successfully deleted!'});
+        res.status(200).json({message: 'item successfully deleted!'});
     } else {
         res.status(404)
         throw new Error('Item not found');

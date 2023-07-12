@@ -11,6 +11,7 @@ export type SessionData = {
   length: number;
   user: string;
   createdAt: string;
+  comment: string;
 };
 
 const UserProfile: React.FC = () => {
@@ -87,7 +88,7 @@ const UserProfile: React.FC = () => {
           <h3 className='userprofile-recent-log'>Your recent sessions:</h3>
           <StudyCard
             studySessions={studySessions}
-            setModalSession={setModalSession}
+            setStudySessions={setStudySessions}
             handleClick={handleClick}
           />
         </div>

@@ -3,13 +3,13 @@ import { SessionData } from '../pages/UserProfile';
 
 interface IStudySessions {
   studySessions: SessionData[] | undefined;
-  setModalSession: React.Dispatch<SetStateAction<SessionData | undefined>>;
+  setStudySessions: React.Dispatch<SetStateAction<SessionData[] | undefined>>;
   handleClick: (session: SessionData | undefined) => void;
 }
 
 const StudyCard = ({
   studySessions,
-  setModalSession,
+  setStudySessions,
   handleClick,
 }: IStudySessions) => {
   const sortedSessions = studySessions?.sort((a, b) => {
@@ -24,6 +24,29 @@ const StudyCard = ({
     }
     return 0;
   });
+  const handleDelete = async (sessionID: string) => {
+    const apiUrlProxy = '/api/study-sessions/';
+    const deletedData = {
+      _id: sessionID,
+    };
+    try {
+      const deleted = await fetch(apiUrlProxy, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(deletedData),
+      });
+      const res = await deleted.json();
+      if (res) {
+        setStudySessions(
+          sortedSessions?.filter(session => session._id !== sessionID)
+        );
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
     <div className='userprofile-study-card-box'>
       {studySessions &&
@@ -31,7 +54,12 @@ const StudyCard = ({
           <div className='userprofile-study-card' key={session._id}>
             <div className='userprofile-study-card-header'>
               <p>{session.createdAt.slice(0, 10)}</p>
-              <button className='userprofile-study-card-delete'>x</button>
+              <button
+                className='userprofile-study-card-delete'
+                onClick={() => handleDelete(session._id)}
+              >
+                x
+              </button>
             </div>
             <p>
               Length:&nbsp;{session.length / 60 / 60}&nbsp;hour
