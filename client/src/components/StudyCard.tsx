@@ -12,10 +12,22 @@ const StudyCard = ({
   setModalSession,
   handleClick,
 }: IStudySessions) => {
+  const sortedSessions = studySessions?.sort((a, b) => {
+    //sort by newest date
+    const sessionA = a.createdAt;
+    const sessionB = b.createdAt;
+    if (sessionA > sessionB) {
+      return -1;
+    }
+    if (sessionA < sessionB) {
+      return 1;
+    }
+    return 0;
+  });
   return (
     <div className='userprofile-study-card-box'>
       {studySessions &&
-        studySessions.map(session => (
+        sortedSessions?.map(session => (
           <div className='userprofile-study-card' key={session._id}>
             <div className='userprofile-study-card-header'>
               <p>{session.createdAt.slice(0, 10)}</p>
@@ -30,11 +42,7 @@ const StudyCard = ({
               session.
             </p>
             <p>-- Notes --</p>
-            <p>
-              lorem ipsum color det i'm writing generic filler text to put some
-              notes in here who knows how long this will end up being ok looks
-              good.
-            </p>
+            <p>{session.comment === '' ? 'N/A' : session.comment}</p>
             <button onClick={() => handleClick(session)}>Edit note</button>
           </div>
         ))}

@@ -4,7 +4,7 @@ import StudySession from "../models/studySessionModel";
 import User from "../models/userModel";
 
 // @desc - Get study sessions
-// @route  GET
+// @route - GET /api/study-sessions/
 // @access Private
 const getStudySessions = asyncHandler(async (req: Request, res: Response) => {
     const findSessions = await StudySession.find( { user : req.user } );
@@ -18,7 +18,7 @@ const getStudySessions = asyncHandler(async (req: Request, res: Response) => {
 });
 
 // @desc - store study session
-// @route POST
+// @route POST /api/study-sessions/new/
 // @access Private
 const createStudySession = asyncHandler(async (req: Request, res: Response) => 
 {
@@ -42,7 +42,25 @@ const createStudySession = asyncHandler(async (req: Request, res: Response) =>
     };
 });
 
+// @desc - delete study session
+// @route DELETE /api/study-sessions/
+// @access Private
+const deleteStudySession = asyncHandler(async (req: Request, res: Response) =>
+{
+    const { _id } = req.body;
+    const itemToDelete = await StudySession.findOne({ _id });
+    if (itemToDelete) {
+        await StudySession.deleteOne({ _id });
+        res.status(204).json({message: 'item successfully deleted!'});
+    } else {
+        res.status(404)
+        throw new Error('Item not found');
+    }
+});
+
+
 export { 
     getStudySessions,
     createStudySession,
+    deleteStudySession,
 };

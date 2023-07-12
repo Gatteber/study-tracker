@@ -4,6 +4,7 @@ type session = {
   length: number;
   user: string;
   createdAt: string;
+  comment: string;
 };
 
 interface IModalSession {
@@ -19,7 +20,7 @@ const Modal = ({ modalSession, modalActive, handleClick }: IModalSession) => {
         <div className='modal-box'>
           <div className='modal-header'>Edit note</div>
           <div className='modal-text'>
-            {modalSession ? modalSession._id : 'loading...'}
+            {modalSession ? modalSession.comment : 'loading...'}
           </div>
           <div className='modal-buttons'>
             <button onClick={() => handleClick(modalSession)}>Cancel</button>
