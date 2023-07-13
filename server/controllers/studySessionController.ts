@@ -5,7 +5,7 @@ import User from "../models/userModel";
 
 // @desc - Get study sessions
 // @route - GET /api/study-sessions/
-// @access Private
+// @access - Private
 const getStudySessions = asyncHandler(async (req: Request, res: Response) => {
     const findSessions = await StudySession.find( { user : req.user } );
 
@@ -18,8 +18,8 @@ const getStudySessions = asyncHandler(async (req: Request, res: Response) => {
 });
 
 // @desc - store study session
-// @route POST /api/study-sessions/new/
-// @access Private
+// @route - POST /api/study-sessions/new/
+// @access - Private
 const createStudySession = asyncHandler(async (req: Request, res: Response) => 
 {
     const { _id, length, completed, comment } = req.body;
@@ -36,15 +36,31 @@ const createStudySession = asyncHandler(async (req: Request, res: Response) =>
         if (studySession) {
             res.status(201).json({studySession});
         } else {
-            res.status(400)
+            res.status(400);
             throw new Error('Invalid data');
         }
     };
 });
 
+//@desc - update study session comment
+//@route PUT /api/study-sessions/
+//@access - Private
+const updateStudySession = asyncHandler(async (req: Request, res: Response) =>
+{
+    const { _id, note } = req.body;
+    const itemToUpdate = await StudySession.findOne({ _id });
+    if (itemToUpdate) { 
+        itemToUpdate.comment = note;
+        await itemToUpdate.save();
+        res.status(200).json({message: 'succesfully updated'});
+    } else {
+        res.status(404);
+        throw new Error('Item not found');
+    };
+});
 // @desc - delete study session
-// @route DELETE /api/study-sessions/
-// @access Private
+// @route - DELETE /api/study-sessions/
+// @access - Private
 const deleteStudySession = asyncHandler(async (req: Request, res: Response) =>
 {
     const { _id } = req.body;
@@ -53,14 +69,15 @@ const deleteStudySession = asyncHandler(async (req: Request, res: Response) =>
         await StudySession.deleteOne({ _id });
         res.status(200).json({message: 'item successfully deleted!'});
     } else {
-        res.status(404)
+        res.status(404);
         throw new Error('Item not found');
-    }
+    };
 });
 
 
 export { 
     getStudySessions,
     createStudySession,
+    updateStudySession,
     deleteStudySession,
 };
