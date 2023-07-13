@@ -19,7 +19,7 @@
 
 .modal-box {
   position: relative;
-  top: 50%;
+  top: 25%;
   left: 25%;
   max-width: 500px;
   display: flex;
@@ -39,4 +39,12 @@
 
 .modal-text {
   color: $white;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-direction: column;
+  text-align: center;
+  textarea {
+    resize: none;
+  }
 }

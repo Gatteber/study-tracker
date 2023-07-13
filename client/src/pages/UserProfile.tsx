@@ -53,6 +53,7 @@ const UserProfile: React.FC = () => {
         modalSession={modalSession}
         modalActive={modalActive}
         handleClick={handleClick}
+        setStudySessions={setStudySessions}
       />
       <div className='userprofile-greeting'>
         <h1>Welcome back, {user.name}!</h1>
