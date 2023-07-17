@@ -88,3 +88,26 @@
   outline: 1px solid $darkGreen;
   border-radius: 5px;
 }
+
+.study-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0.5rem;
+}
+
+.session-edit-button {
+  cursor: pointer;
+  max-width: 5rem;
+  font-size: 1rem;
+  padding: 0.5rem 0 0.5rem 0;
+  border-style: none;
+  color: $white;
+  background-color: $darkPurple;
+  border-radius: 5px;
+  transition: all 200ms;
+
+  &:hover {
+    background-color: $lightPurple;
+  }
+}

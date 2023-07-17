@@ -64,32 +64,39 @@ const Modal = ({
     handleClick(modalSession);
   };
   return (
-    <div>
-      <div className={modalActive ? 'modal-bg active' : 'modal-bg'}>
-        <div className='modal-box'>
-          <div className='modal-header'></div>
-          <div className='modal-text'>
-            <label htmlFor='update-comment'>Edit comment - </label>
-            <textarea
-              id='update-comment'
-              name='update-comment'
-              placeholder={'Current comment: ' + modalSession?.comment}
-              rows={10}
-              cols={50}
-              value={newNote}
-              onChange={e => setNewNote(e.target.value)}
-            ></textarea>
-            <span>
-              Click cancel to keep your current comment or save to save a new
-              comment.
-            </span>
-          </div>
-          <div className='modal-buttons'>
-            <button onClick={() => closeModal(modalSession)}>Cancel</button>
-            <button onClick={() => handleUpdate(modalSession?._id, newNote)}>
-              Save
-            </button>
-          </div>
+    <div className={modalActive ? 'modal active' : 'modal'}>
+      <div className={modalActive ? 'modal-bg active' : 'modal-bg'}></div>
+      <div className={modalActive ? 'modal-box active' : 'modal-box'}>
+        <div className='modal-header'></div>
+        <div className='modal-text'>
+          <label htmlFor='update-comment'>Edit comment - </label>
+          <textarea
+            id='update-comment'
+            name='update-comment'
+            placeholder={'Current comment: ' + modalSession?.comment}
+            rows={10}
+            cols={50}
+            value={newNote}
+            onChange={e => setNewNote(e.target.value)}
+          ></textarea>
+          <span>
+            Click cancel to keep your current comment or save to save a new
+            comment.
+          </span>
+        </div>
+        <div className='modal-buttons'>
+          <button
+            className='modal-button'
+            onClick={() => closeModal(modalSession)}
+          >
+            Cancel
+          </button>
+          <button
+            className='modal-button'
+            onClick={() => handleUpdate(modalSession?._id, newNote)}
+          >
+            Save
+          </button>
         </div>
       </div>
     </div>

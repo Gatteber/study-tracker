@@ -61,17 +61,24 @@ const StudyCard = ({
                 x
               </button>
             </div>
-            <p>
-              Length:&nbsp;{session.length / 60 / 60}&nbsp;hour
-              {session.length > 3600 ? 's' : ''}
-            </p>
-            <p>
-              You {session.completed ? 'finished' : "didn't finish"} this
-              session.
-            </p>
-            <p>-- Notes --</p>
-            <p>{session.comment === '' ? 'N/A' : session.comment}</p>
-            <button onClick={() => handleClick(session)}>Edit note</button>
+            <div className='study-card-body'>
+              <p>
+                Length:&nbsp;{session.length / 60 / 60}&nbsp;hour
+                {session.length > 3600 ? 's' : ''}
+              </p>
+              <p>
+                You {session.completed ? 'finished' : "didn't finish"} this
+                session.
+              </p>
+              <p>-- Notes --</p>
+              <p>{session.comment === '' ? 'N/A' : session.comment}</p>
+              <button
+                className='session-edit-button'
+                onClick={() => handleClick(session)}
+              >
+                Edit note
+              </button>
+            </div>
           </div>
         ))}
     </div>
