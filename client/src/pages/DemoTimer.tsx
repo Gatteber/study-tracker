@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
-import DemoTimerComponent from '../components/DemoTimerComponent';
+import Timer from '../components/DemoTimerComponent';
 
+//TODO: remove React.FC as much as possible, deprecated.
 const DemoTimer: React.FC = () => {
   return (
     <div className='outlet-content'>
       <h1 className='h1-demo-text'>Try StudyTracker!</h1>
-      <DemoTimerComponent />
+      {/*7200s = 2h 1500s = 25m 300s = 5m */}
+      <Timer totalTime={7200} studyInterval={1500} breakInterval={300} />
       <div className='instructions-box'>
         <p>Instructions:</p>
         <ol className='list-instructions' type='1'>

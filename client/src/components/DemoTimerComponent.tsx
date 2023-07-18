@@ -1,8 +1,18 @@
 import { useState, useEffect } from 'react';
 import alarm from '../assets/alarm-clock-short-6402.mp3';
 
-const Timer: React.FC = () => {
-  const [count, setCount] = useState(7200);
+interface props {
+  totalTime: number;
+  studyInterval: number;
+  breakInterval: number;
+}
+
+const Timer: React.FC<any> = ({
+  totalTime,
+  studyInterval,
+  breakInterval,
+}: props) => {
+  const [count, setCount] = useState(totalTime);
   const [elapsed, setElapsed] = useState(0);
   const [start, setStart] = useState<boolean>(false);
   const [minutes, setMinutes] = useState(0);
@@ -13,7 +23,7 @@ const Timer: React.FC = () => {
 
   const handleRestart = () => {
     setStart(false);
-    setCount(7200);
+    setCount(totalTime);
     setElapsed(0);
     setIsBreak(false);
     setStudyText('Studying');
@@ -41,13 +51,13 @@ const Timer: React.FC = () => {
     const alarmSound = new Audio(alarm);
     const checkStatus = () => {
       //7200s = 2h 1500s = 25m 300s = 5m
-      if (elapsed >= 1500) {
+      if (elapsed >= studyInterval) {
         setStudyText('Break');
         alarmSound.play();
         setElapsed(0);
         setIsBreak(!isBreak);
       }
-      if (elapsed >= 300 && studyText === 'Break') {
+      if (elapsed >= breakInterval && studyText === 'Break') {
         setStudyText('Studying');
         alarmSound.play();
         setElapsed(0);

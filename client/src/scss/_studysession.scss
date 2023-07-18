@@ -1,0 +1,19 @@
+@import 'variables';
+
+.settings-box {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+.settings-button {
+  cursor: pointer;
+  background-color: $darkPurple;
+  color: $white;
+  border: none;
+  border-radius: 5px;
+  padding: 1rem;
+  transition: all 200ms;
+  &:hover {
+    background-color: $lightPurple;
+  }
+}

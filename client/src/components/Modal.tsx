@@ -13,7 +13,7 @@ interface IModalSession {
   modalSession: session | undefined;
   modalActive: boolean;
   handleClick: (session: session | undefined) => void;
-  setStudySessions: React.Dispatch<SetStateAction<SessionData[]>>;
+  setStudySessions: React.Dispatch<SetStateAction<SessionData[] | undefined>>;
 }
 
 const Modal = ({
