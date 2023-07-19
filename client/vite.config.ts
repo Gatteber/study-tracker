@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -11,7 +11,7 @@ export default defineConfig({
       '/api/users/profile': 'http://localhost:5000',
       '/api/users/': 'http://localhost:5000',
       '/api/study-sessions': 'http://localhost:5000',
-
-    }
-  }
-})
+      '/api/study-sessions/new': 'http://localhost:5000',
+    },
+  },
+});

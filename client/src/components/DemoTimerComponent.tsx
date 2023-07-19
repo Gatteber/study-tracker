@@ -1,16 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, SetStateAction, useContext } from 'react';
 import alarm from '../assets/alarm-clock-short-6402.mp3';
+import { UserContext } from '../context/UserContext';
 
 interface props {
   totalTime: number;
   studyInterval: number;
   breakInterval: number;
+  submitSession?: boolean;
+  setSubmitSession?: React.Dispatch<SetStateAction<boolean>>;
 }
 
 const Timer: React.FC<any> = ({
   totalTime,
   studyInterval,
   breakInterval,
+  submitSession,
+  setSubmitSession,
 }: props) => {
   const [count, setCount] = useState(totalTime);
   const [elapsed, setElapsed] = useState(0);
@@ -20,6 +25,8 @@ const Timer: React.FC<any> = ({
   const [seconds, setSeconds] = useState(0);
   const [studyText, setStudyText] = useState<string>('Studying');
   const [isBreak, setIsBreak] = useState<boolean>(false);
+  const [sessionId, setSessionId] = useState('');
+  const { user } = useContext(UserContext);
 
   const handleRestart = () => {
     setStart(false);
@@ -31,6 +38,35 @@ const Timer: React.FC<any> = ({
     setMinutes(0);
     setSeconds(0);
     document.title = 'StudyTracker';
+  };
+
+  const handleSubmit = async (time: number) => {
+    const data = {
+      _id: user._id,
+      length: time,
+      completed: false,
+      comment: '',
+    };
+    const apiUrlProxy = '/api/study-sessions/new';
+    try {
+      const createNewSession = await fetch(apiUrlProxy, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      const newSession = await createNewSession.json();
+      if (newSession) {
+        setSessionId(newSession._id);
+        console.log(newSession);
+      } else {
+        //session creation failed
+        alert(newSession.message);
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   useEffect(() => {
@@ -46,6 +82,15 @@ const Timer: React.FC<any> = ({
       window.removeEventListener('beforeunload', unloadCallback);
     };
   }, []);
+
+  //bind timer/hours to user selected time
+  useEffect(() => {
+    const calculateHours = (seconds: number) => {
+      return Math.floor(seconds / 3600);
+    };
+    setCount(totalTime);
+    setHours(calculateHours(totalTime));
+  }, [totalTime]);
 
   useEffect(() => {
     const alarmSound = new Audio(alarm);
@@ -66,6 +111,10 @@ const Timer: React.FC<any> = ({
     };
     if (start) {
       const timer = setTimeout(() => {
+        if (submitSession) {
+          setSubmitSession!(false);
+          handleSubmit(totalTime);
+        }
         setCount(count - 1);
         setElapsed(elapsed + 1);
         setHours(Math.floor(count / 3600));
@@ -85,7 +134,16 @@ const Timer: React.FC<any> = ({
         clearTimeout(timer);
       };
     }
-  }, [start, elapsed, count, minutes, studyText, isBreak]);
+  }, [
+    start,
+    elapsed,
+    count,
+    minutes,
+    studyText,
+    isBreak,
+    breakInterval,
+    studyInterval,
+  ]);
 
   return (
     <>
