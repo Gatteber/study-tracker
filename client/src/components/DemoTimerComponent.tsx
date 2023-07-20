@@ -25,7 +25,7 @@ const Timer: React.FC<any> = ({
   const [seconds, setSeconds] = useState(0);
   const [studyText, setStudyText] = useState<string>('Studying');
   const [isBreak, setIsBreak] = useState<boolean>(false);
-  const [sessionId, setSessionId] = useState('');
+  const [sessionId, setSessionId] = useState();
   const { user } = useContext(UserContext);
 
   const handleRestart = () => {
@@ -58,8 +58,8 @@ const Timer: React.FC<any> = ({
       });
       const newSession = await createNewSession.json();
       if (newSession) {
-        setSessionId(newSession._id);
-        console.log(newSession);
+        const getId = newSession.studySession._id;
+        setSessionId(getId);
       } else {
         //session creation failed
         alert(newSession.message);
@@ -68,6 +68,31 @@ const Timer: React.FC<any> = ({
       console.error(err);
     }
   };
+
+  const handleCompleted = async (id: string | undefined, completed: boolean) => {
+      const data = {
+          _id: id,
+          completed,
+        }
+      const apiUrlProxy = '/api/study-sessions';
+      try {
+          const updateSession = await fetch(apiUrlProxy, {
+              method: 'PUT',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(data)
+      });
+          const res = await updateSession.json();
+          if (res) {
+              console.log('completed session!')
+          } else {
+              console.log('something went wrong');
+          }
+      } catch (err) {
+          console.error(err);
+      }
+  }
 
   useEffect(() => {
     const unloadCallback = (e: BeforeUnloadEvent) => {
@@ -128,6 +153,7 @@ const Timer: React.FC<any> = ({
         alarmSound.play();
         setStart(false);
         setStudyText('Finished!');
+        handleCompleted(sessionId, true);
       }
 
       return () => {

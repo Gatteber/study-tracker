@@ -47,12 +47,16 @@ const createStudySession = asyncHandler(async (req: Request, res: Response) =>
 //@access - Private
 const updateStudySession = asyncHandler(async (req: Request, res: Response) =>
 {
-    const { _id, note } = req.body;
+    const { _id, note, completed } = req.body;
     const itemToUpdate = await StudySession.findOne({ _id });
-    if (itemToUpdate) { 
+    if (itemToUpdate && note) { 
         itemToUpdate.comment = note;
         await itemToUpdate.save();
-        res.status(200).json({message: 'succesfully updated'});
+        res.status(200).json({message: 'successfully updated'});
+    } else if (itemToUpdate && completed) {
+        itemToUpdate.completed = completed;
+        await itemToUpdate.save();
+        res.status(200).json({message: 'successfully updated'});
     } else {
         res.status(404);
         throw new Error('Item not found');

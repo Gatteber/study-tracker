@@ -40,6 +40,7 @@ const StudySession = () => {
               value={totalTime}
               onChange={e => setTotalTime(parseInt(e.target.value))}
             >
+            <option value={60}>1 minute(dev only)</option>
               <option value={3600}>1 hour</option>
               <option value={7200}>2 hours</option>
               <option value={14400}>4 hours</option>
