@@ -8,6 +8,7 @@ interface props {
   breakInterval: number;
   submitSession?: boolean;
   setSubmitSession?: React.Dispatch<SetStateAction<boolean>>;
+  studyNote?: string | '';
 }
 
 const Timer: React.FC<any> = ({
@@ -16,6 +17,7 @@ const Timer: React.FC<any> = ({
   breakInterval,
   submitSession,
   setSubmitSession,
+  studyNote,
 }: props) => {
   const [count, setCount] = useState(totalTime);
   const [elapsed, setElapsed] = useState(0);
@@ -45,7 +47,7 @@ const Timer: React.FC<any> = ({
       _id: user._id,
       length: time,
       completed: false,
-      comment: '',
+      comment: studyNote,
     };
     const apiUrlProxy = '/api/study-sessions/new';
     try {
@@ -69,30 +71,33 @@ const Timer: React.FC<any> = ({
     }
   };
 
-  const handleCompleted = async (id: string | undefined, completed: boolean) => {
-      const data = {
-          _id: id,
-          completed,
-        }
-      const apiUrlProxy = '/api/study-sessions';
-      try {
-          const updateSession = await fetch(apiUrlProxy, {
-              method: 'PUT',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(data)
+  const handleCompleted = async (
+    id: string | undefined,
+    completed: boolean
+  ) => {
+    const data = {
+      _id: id,
+      completed,
+    };
+    const apiUrlProxy = '/api/study-sessions';
+    try {
+      const updateSession = await fetch(apiUrlProxy, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
       });
-          const res = await updateSession.json();
-          if (res) {
-              console.log('completed session!')
-          } else {
-              console.log('something went wrong');
-          }
-      } catch (err) {
-          console.error(err);
+      const res = await updateSession.json();
+      if (res) {
+        console.log('completed session!');
+      } else {
+        console.log('something went wrong');
       }
-  }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   useEffect(() => {
     const unloadCallback = (e: BeforeUnloadEvent) => {
