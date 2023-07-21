@@ -45,6 +45,7 @@ const StudySession = () => {
               <select
                 name='studytime'
                 id='studytime'
+                className='studysession-studytime'
                 value={totalTime}
                 onChange={e => setTotalTime(parseInt(e.target.value))}
               >
@@ -60,6 +61,7 @@ const StudySession = () => {
               <select
                 name='studyinterval'
                 id='studyinterval'
+                className='studysession-studyinterval'
                 value={studyInterval}
                 onChange={e => setStudyInterval(parseInt(e.target.value))}
               >
@@ -75,6 +77,7 @@ const StudySession = () => {
               <select
                 name='breakinterval'
                 id='breakinterval'
+                className='studysession-breakinterval'
                 value={breakInterval}
                 onChange={e => setBreakInterval(parseInt(e.target.value))}
               >
@@ -85,7 +88,7 @@ const StudySession = () => {
               </select>
             </div>
             <div className='studysession-settings-bottom'>
-              <label htmlFor='study-item-note'>Note(s)</label>
+              <label htmlFor='study-item-note'>Note(s) - optional</label>
               <textarea
                 cols={30}
                 rows={6}
