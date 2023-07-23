@@ -1,0 +1,26 @@
+@import './variables';
+
+.paginate-menu {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.paginate-button {
+  border: none;
+  background-color: $darkGreen;
+  color: $white;
+  font-size: 1rem;
+  padding: 0.5rem;
+  transition: all 200ms;
+  border-radius: 5px;
+
+  &.active {
+    background-color: $darkPurple;
+  }
+
+  &:hover {
+    background-color: $lightPurple;
+  }
+}
