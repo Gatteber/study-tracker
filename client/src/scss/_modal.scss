@@ -1,6 +1,7 @@
 @import './variables';
 
-.modal {
+.modal,
+.stats {
   display: none;
   transition: all 200ms;
   &.active {
@@ -8,7 +9,8 @@
   }
 }
 
-.modal-bg {
+.modal-bg,
+.stats-bg {
   position: fixed;
   top: 0;
   left: 0;
@@ -20,7 +22,8 @@
   overflow: hidden;
 }
 
-.modal-box {
+.modal-box,
+.stats-box {
   position: fixed;
   top: 25%;
   left: 20%;
