@@ -60,6 +60,7 @@ const StudyStats = ({
         <div className='stats-header'>
           <h3 className='stats-text'>Your Study Stats</h3>
           <button
+            className='stats-button'
             onClick={() => {
               handleStudyClick();
             }}
@@ -67,22 +68,34 @@ const StudyStats = ({
             {' '}
             X{' '}
           </button>
-          <div className='stats-body'>
-            <ul>
-              <li>
-                Study sessions: {studySessions ? studySessions.length : 0}{' '}
-              </li>
-              <li>Completed sessions: {calculateCompleted(studySessions)}</li>
-              <li>
-                Time studied:{' '}
+        </div>
+        <div className='stats-body'>
+          <ul className='stats-list'>
+            <li>
+              Study sessions:{' '}
+              <span className='stats-numbertext'>
+                {studySessions ? studySessions.length : 0}
+              </span>{' '}
+            </li>
+            <li>
+              Completed sessions:{' '}
+              <span className='stats-numbertext'>
+                {calculateCompleted(studySessions)}
+              </span>
+            </li>
+            <li>
+              Time studied:{' '}
+              <span className='stats-numbertext'>
                 {calculateTimeStudied(studySessions) / 3600 + ' hours'}{' '}
-              </li>
-              <li>
-                Most frequent study time:
+              </span>
+            </li>
+            <li>
+              Most frequent study time:{' '}
+              <span className='stats-numbertext'>
                 {calculateMode(studySessions) / 3600 + ' hours'}{' '}
-              </li>
-            </ul>
-          </div>
+              </span>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

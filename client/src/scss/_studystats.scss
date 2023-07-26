@@ -1,5 +1,42 @@
 @import './variables';
 
+.stats-box {
+  padding: 1rem;
+  color: $white;
+}
+
+.stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+  gap: 5rem;
+}
 .stats-text {
   color: $lightGreen;
+}
+
+.stats-button {
+  background-color: $darkPurple;
+  border: none;
+  border-radius: 5px;
+  color: $white;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 200ms;
+
+  &:hover {
+    background-color: $lightPurple;
+  }
+}
+
+.stats-body {
+  .stats-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .stats-numbertext {
+      color: $lightGreen;
+    }
+  }
 }
