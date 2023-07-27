@@ -5,6 +5,7 @@ import StudyCard from '../components/StudyCard';
 import { Link } from 'react-router-dom';
 import Modal from '../components/Modal';
 import StudyStats from '../components/StudyStats';
+import EditProfile from '../components/EditProfile';
 
 export type SessionData = {
   _id: string;
@@ -21,6 +22,7 @@ const UserProfile: React.FC = () => {
   const [modalSession, setModalSession] = useState<SessionData>();
   const [modalActive, setModalActive] = useState<boolean>(false);
   const [statsActive, setStatsActive] = useState<boolean>(false);
+  const [editProfileActive, setEditProfileActive] = useState<boolean>(false);
   const handleClick = (data: SessionData | undefined) => {
     setModalSession(data);
     setModalActive(modalActive => !modalActive);
@@ -28,6 +30,9 @@ const UserProfile: React.FC = () => {
   //TODO: evaluate if this is best way to handle.
   const handleStudyClick = () => {
     setStatsActive(statsActive => !statsActive);
+  };
+  const handleEditClick = () => {
+    setEditProfileActive(editProfileActive => !editProfileActive);
   };
   const calculateStudyTime = (array: SessionData[]) => {
     let studyTime = 0;
@@ -66,6 +71,10 @@ const UserProfile: React.FC = () => {
         statsActive={statsActive}
         studySessions={studySessions}
       />
+      <EditProfile
+        handleEditClick={handleEditClick}
+        editProfileActive={editProfileActive}
+      />
       <div className='userprofile-greeting'>
         <h1>Welcome back, {user.name}!</h1>
         <p>
@@ -99,7 +108,14 @@ const UserProfile: React.FC = () => {
               </button>
             </li>
             <li className='userprofile-last-item'>
-              <button className='study-button'>Edit profile</button>
+              <button
+                className='study-button'
+                onClick={() => {
+                  handleEditClick();
+                }}
+              >
+                Edit profile
+              </button>
             </li>
           </ul>
         </div>

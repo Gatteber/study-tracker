@@ -7,7 +7,8 @@ import User from "../models/userModel";
 // @route - GET /api/study-sessions/
 // @access - Private
 const getStudySessions = asyncHandler(async (req: Request, res: Response) => {
-    const findSessions = await StudySession.find( { user : req.user } );
+
+    const findSessions = await StudySession.find( { user : req.user?._id } );
 
     if(findSessions) {
         res.status(200).json(findSessions);

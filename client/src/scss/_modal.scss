@@ -1,7 +1,8 @@
 @import './variables';
 
 .modal,
-.stats {
+.stats,
+.edit-profile {
   display: none;
   transition: all 200ms;
   &.active {
@@ -10,7 +11,8 @@
 }
 
 .modal-bg,
-.stats-bg {
+.stats-bg,
+.edit-profile-bg {
   position: fixed;
   top: 0;
   left: 0;
@@ -23,7 +25,8 @@
 }
 
 .modal-box,
-.stats-box {
+.stats-box,
+.edit-profile-box {
   position: fixed;
   top: 30%;
   left: 40%;

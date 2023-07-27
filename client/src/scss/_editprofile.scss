@@ -1,0 +1,13 @@
+@import './variables';
+
+.edit-profile-header {
+  padding: 2rem 2rem 0 2rem;
+  display: flex;
+  gap: 2rem;
+}
+.edit-profile-form {
+  padding: 1rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
