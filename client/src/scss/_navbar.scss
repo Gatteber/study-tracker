@@ -38,14 +38,26 @@ img {
   list-style: none;
   text-decoration: none;
 
-  li {
-    padding-bottom: 0.25rem;
-    border-bottom: 1px transparent;
-    transition: all 250ms ease-in-out;
-  }
+  .nav-item-underline {
+    display: inline-block;
+    position: relative;
 
-  li:hover {
-    color: $white;
-    border-bottom: 1px solid $lightGreen;
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 1px;
+      bottom: -5px;
+      left: 0;
+      background-color: $white;
+      transform-origin: bottom right;
+      transition: transform 0.25s ease-out;
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
   }
 }

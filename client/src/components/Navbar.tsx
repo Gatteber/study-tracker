@@ -41,13 +41,13 @@ const Navbar: React.FC = () => {
         <nav>
           {isLoggedIn ? (
             <ul className='nav-item'>
-              <li>
+              <li className='nav-item-underline'>
                 <Link to={'/profile/'}>Profile</Link>
               </li>
-              <li>
+              <li className='nav-item-underline'>
                 <Link to={'/profile/study-session'}>Study</Link>
               </li>
-              <li>
+              <li className='nav-item-underline'>
                 <Link
                   to={'/'}
                   onClick={() => {

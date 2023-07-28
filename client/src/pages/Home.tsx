@@ -1,7 +1,10 @@
 import Hero from '../components/Hero';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { UserContext } from '../context/UserContext';
 
 const Home: React.FC = () => {
+  const { user } = useContext(UserContext);
   return (
     <div className='outlet-content'>
       <div className='landing-box'>
@@ -25,12 +28,20 @@ const Home: React.FC = () => {
           <h3> What are you waiting for?</h3>
           <p>Get studying now.</p>
           <div className='cta-button-box'>
-            <Link to='/signup'>
-              <button id='landing-button'>Register</button>
-            </Link>
-            <Link to='/login'>
-              <button id='landing-button'>Sign in</button>
-            </Link>
+            {user._id !== '' ? (
+              <Link to='/profile/study-session'>
+                <button id='landing-button'>Let's go!</button>
+              </Link>
+            ) : (
+              <div className='cta-button-box'>
+                <Link to='/signup'>
+                  <button id='landing-button'>Register</button>
+                </Link>
+                <Link to='/login'>
+                  <button id='landing-button'>Sign in</button>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

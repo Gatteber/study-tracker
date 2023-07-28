@@ -89,17 +89,17 @@ const UserProfile: React.FC = () => {
           <ul className='userprofile-buttons'>
             <li>
               <Link to='/'>
-                <button className='study-button'>Home</button>
+                <button className='generic-nav-button'>Home</button>
               </Link>
             </li>
             <li>
               <Link to='study-session'>
-                <button className='study-button'>Start session</button>
+                <button className='generic-nav-button'>Start session</button>
               </Link>
             </li>
             <li>
               <button
-                className='study-button'
+                className='generic-nav-button'
                 onClick={() => {
                   handleStudyClick();
                 }}
@@ -109,7 +109,7 @@ const UserProfile: React.FC = () => {
             </li>
             <li className='userprofile-last-item'>
               <button
-                className='study-button'
+                className='generic-nav-button'
                 onClick={() => {
                   handleEditClick();
                 }}

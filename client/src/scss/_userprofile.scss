@@ -4,7 +4,7 @@
 
 .userprofile-box {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 3fr;
   justify-content: center;
   justify-items: center;
   padding: 2rem;
@@ -55,6 +55,9 @@
   padding: 1rem;
   outline: 1px solid $darkPurple;
   border-radius: 5px;
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 .userprofile-study-card-header {
