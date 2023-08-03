@@ -74,7 +74,12 @@ const EditProfile = ({ handleEditClick, editProfileActive }: props) => {
       >
         <div className='edit-profile-header'>
           <h3>Edit your profile</h3>
-          <button onClick={() => handleEditClick()}>X</button>
+          <button
+            className='edit-close-profile'
+            onClick={() => handleEditClick()}
+          >
+            X
+          </button>
         </div>
         <div className='edit-profile-body'>
           <Form
@@ -117,7 +122,9 @@ const EditProfile = ({ handleEditClick, editProfileActive }: props) => {
                 handleChange(e);
               }}
             />
-            <button type='submit'> Update </button>
+            <button className='edit-profile-submit' type='submit'>
+              Update{' '}
+            </button>
           </Form>
         </div>
       </div>
